@@ -1,11 +1,11 @@
-/**
- * Created by Hyldgaard on 9/4/15.
- */
+
 public class test {
 
 
-    public test() {
+    public test()
+    {
         System.out.println("ewopfjwe");
+        System.out.println("Hello from Hisayo");
     }
 
 }
