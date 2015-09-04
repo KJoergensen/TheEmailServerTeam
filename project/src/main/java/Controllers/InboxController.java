@@ -1,11 +1,36 @@
 package Controllers;
 
 import Models.Email;
+import Utilities.EmailReceiver;
+import Utilities.EmailSender;
+import java.util.ArrayList;
 
-/**
- * Created by Hyldgaard on 9/4/15.
- */
-public class InboxController {
+public class InboxController
+{
+    public EmailReceiver receiver = new EmailReceiver();
+    public EmailSender sender = new EmailSender();
+    public ArrayList<Email> inbox = new ArrayList<>();
 
 
+    public void sendEmail(Email email)
+    {
+        // TODO: Return Http status code
+        sender.sendEmail(email);
     }
+
+    public ArrayList<Email> updateInbox()
+    {
+        // Retrieving all emails from server
+        ArrayList<Email> newEmails = receiver.getEmails();
+        // Removing all duplicates
+        newEmails.removeAll(inbox);
+
+        // Adding new emails to inbox
+        for (Email mail : newEmails)
+        {
+            inbox.add(mail);
+        }
+
+        return inbox;
+    }
+}

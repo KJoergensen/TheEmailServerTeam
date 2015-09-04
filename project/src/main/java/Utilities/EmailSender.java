@@ -1,7 +1,11 @@
 package Utilities;
 
-/**
- * Created by Hyldgaard on 9/4/15.
- */
-public class EmailSender {
+import Models.Email;
+
+public class EmailSender
+{
+    public void sendEmail(Email email)
+    {
+        // TODO: A method that sends the emails to gmail server
+    }
 }

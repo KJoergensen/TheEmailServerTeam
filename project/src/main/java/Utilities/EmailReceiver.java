@@ -1,7 +1,17 @@
 package Utilities;
 
-/**
- * Created by Hyldgaard on 9/4/15.
- */
-public class EmailReceiver {
+import Models.Email;
+import java.util.*;
+
+public class EmailReceiver
+{
+    public ArrayList<Email> getEmails ()
+    {
+        ArrayList<Email> list = new ArrayList<>();
+
+        // TODO: Some method that contacts gmail server
+
+        return list;
+    }
+
 }
