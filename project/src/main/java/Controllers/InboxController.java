@@ -9,7 +9,7 @@ public class InboxController
 {
     public EmailReceiver receiver = new EmailReceiver();
     public EmailSender sender = new EmailSender();
-    public ArrayList<Email> inbox = new ArrayList<>();
+    public ArrayList<Email> inbox = new ArrayList<Email>();
 
 
     public void sendEmail(Email email)
