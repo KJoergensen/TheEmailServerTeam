@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77f3262e-d656-42ca-8f74-3208fb613e12" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Views/InboxView.form" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Views/LoginView.form" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Utilities/EmailReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/Utilities/EmailReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Controllers/InboxController.java" afterPath="$PROJECT_DIR$/src/main/java/Controllers/InboxController.java" />
+    <list default="true" id="77f3262e-d656-42ca-8f74-3208fb613e12" name="Default" comment="Added InboxView. you can se to windows">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Views/InboxView.java" afterPath="$PROJECT_DIR$/src/main/java/Views/InboxView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Views/LoginView.java" afterPath="$PROJECT_DIR$/src/main/java/Views/LoginView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Run.java" afterPath="$PROJECT_DIR$/src/main/java/Run.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -40,26 +37,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Views/LoginView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.12605043">
-              <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#500#501#0" expanded="true" />
-                <element signature="e#528#529#0" expanded="true" />
+                <element signature="e#442#443#0" expanded="true" />
+                <element signature="e#470#471#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Run.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Run.java">
+      <file leaf-file-name="InboxView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Views/InboxView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-              <folding />
+              <caret line="80" column="9" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2718#3150#0" expanded="true" />
+                <element signature="e#3149#3150#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Run.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Run.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.31512606">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,12 +123,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/test.java" />
         <option value="$PROJECT_DIR$/project.iml" />
-        <option value="$PROJECT_DIR$/src/main/java/Views/InboxView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Run.java" />
         <option value="$PROJECT_DIR$/src/main/java/Utilities/EmailReceiver.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controllers/InboxController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Views/LoginView.form" />
         <option value="$PROJECT_DIR$/src/main/java/Views/LoginView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Views/InboxView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Run.java" />
       </list>
     </option>
   </component>
@@ -130,8 +143,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="11" />
-    <option name="y" value="23" />
+    <option name="x" value="8" />
+    <option name="y" value="28" />
     <option name="width" value="1260" />
     <option name="height" value="733" />
   </component>
@@ -311,6 +324,8 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
     <UpdatedFiles>
@@ -630,11 +645,23 @@
       <option name="project" value="LOCAL" />
       <updated>1441370423119</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="One more time to add views with gui form">
+      <created>1441392540391</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1441392540391</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added LoginView">
+      <created>1441393137264</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1441393137264</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="11" y="23" width="1260" height="733" extended-state="0" />
+    <frame x="8" y="28" width="1260" height="733" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -662,6 +689,14 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -669,7 +704,8 @@
     <MESSAGE value="add new message to test" />
     <MESSAGE value="Added package views and classes Inbox and Login" />
     <MESSAGE value="One more time to add views with gui form" />
-    <option name="LAST_COMMIT_MESSAGE" value="One more time to add views with gui form" />
+    <MESSAGE value="Added LoginView" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added LoginView" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -680,14 +716,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Views/InboxView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17985612">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.444445">
@@ -716,22 +744,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Run.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Views/LoginView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding />
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#470#471#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Views/LoginView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Views/InboxView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12605043">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="9" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#2718#3150#0" expanded="true" />
+            <element signature="e#3149#3150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Run.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31512606">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

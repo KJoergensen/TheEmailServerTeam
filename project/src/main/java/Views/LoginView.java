@@ -2,12 +2,14 @@ package Views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /***
  * Created by Hisayo on 04/09/15.
  */
-public class LoginView extends JFrame{
+public class LoginView extends JFrame implements ActionListener{
 
     static final String LOGIN ="Login";
     static final String CANCEL = "Cancel";
@@ -58,5 +60,23 @@ public class LoginView extends JFrame{
         mainPanel.add(southPanel);
 
         return mainPanel;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        //click cancel button
+        if(e.getSource().equals(this.cancelBtn))
+        {
+            dispose();
+        }
+
+        //define action to click loginBtn
+        //define to get email from textField
+        if(e.getSource().equals(this.loginBtn))
+        {
+            String emailFormat = "";//format test?
+            String email = this.emailTxtF.getText().trim();
+            String password = this.passwordTxtF.getText().trim();
+        }
     }
 }

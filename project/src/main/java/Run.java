@@ -1,4 +1,5 @@
 import Views.LoginView;
+import Views.InboxView;
 
 public class Run
 {
@@ -6,6 +7,8 @@ public class Run
     {
 
 //        System.out.println("Hello World");
-       new LoginView();
+        new InboxView();
+        new LoginView();
+
     }
 }
