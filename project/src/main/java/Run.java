@@ -8,7 +8,7 @@ public class Run
 
 //        System.out.println("Hello World");
         new InboxView();
-        //new LoginView();
+        new LoginView();
 
     }
 }
