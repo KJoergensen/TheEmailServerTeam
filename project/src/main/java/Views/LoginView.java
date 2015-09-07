@@ -15,7 +15,8 @@ public class LoginView extends JFrame implements ActionListener{
     static final String CANCEL = "Cancel";
 
     private JButton cancelBtn, loginBtn;
-    private JTextField emailTxtF, passwordTxtF;
+    private JTextField emailTxtF;
+    private JPasswordField passwordTxtF;
 
     public LoginView()
     {
@@ -44,7 +45,7 @@ public class LoginView extends JFrame implements ActionListener{
 
         JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JLabel passwordLabel = new JLabel("Password");
-        this.passwordTxtF = new JTextField(20);
+        this.passwordTxtF = new JPasswordField(20);
         centerPanel.add(passwordLabel);
         centerPanel.add(passwordTxtF);
 
