@@ -12,9 +12,10 @@ import java.awt.event.*;
 public class InboxView extends JFrame implements ActionListener{
 
     private JButton inboxBtn;
-    private String []headerTitle = {"Email Address","Subject"};
+    private String []headerTitle = {"Date","Email Address","Subject"};
     //private String []emailData = {"mail@sample.com","subjectExample"};
     private JTable inboxTable;
+    private TextArea messageTxtArea;
 
     public InboxView()
     {
@@ -39,18 +40,22 @@ public class InboxView extends JFrame implements ActionListener{
         this.inboxBtn.addActionListener(this);
         leftPanel.add(inboxBtn);
 
-        JPanel rightPanel = new JPanel();
+        JPanel rightPanel = new JPanel();//right side of window
+        rightPanel.setLayout(new BorderLayout());
+
+        JPanel northPanel = new JPanel();//inbox table
 
         //to add new email, use DefaultTableModel.
-        DefaultTableModel tableModel = new DefaultTableModel(this.headerTitle,5);//set the header at 1st row, 1 column
+        DefaultTableModel tableModel = new DefaultTableModel(this.headerTitle,15);//set the header at 1st row, 1 column
 
         //model set in table
         this.inboxTable = new JTable(tableModel);
 
         //make a hedder size to the table
         int[] width = new int[this.headerTitle.length];
-        width[0]=150;
-        width[1]=700;
+        width[0]=50;
+        width[1]=100;
+        width[2]=700;
         for(int i = 0; i<width.length;i++)
         {
             TableColumn column = inboxTable.getColumnModel().getColumn(i);
@@ -63,8 +68,17 @@ public class InboxView extends JFrame implements ActionListener{
 
         //you can scroll the table
         JScrollPane scrollPane = new JScrollPane(inboxTable);
-        scrollPane.setPreferredSize(new Dimension(850,450));//it effects to make size of table
-        rightPanel.add(scrollPane);
+        scrollPane.setPreferredSize(new Dimension(850,200));//it effects to make size of table
+        northPanel.add(scrollPane);
+
+        JPanel southPanel = new JPanel();//message textArea
+        this.messageTxtArea = new TextArea();
+        messageTxtArea.setPreferredSize(new Dimension(850,200));
+        southPanel.add(messageTxtArea);
+
+
+        rightPanel.add(northPanel,BorderLayout.NORTH);
+        rightPanel.add(southPanel,BorderLayout.SOUTH);
 
         //to divide window right and left
         JSplitPane splitPane = new JSplitPane();
@@ -95,6 +109,10 @@ public class InboxView extends JFrame implements ActionListener{
 
                 //have to define what happen after click the email and subject
                 System.out.println("Row" + row + "::" + "column" + column);
+
+                messageTxtArea.setText("Row" + row + "::" + "column" + column);
+
+
 
 
             }
