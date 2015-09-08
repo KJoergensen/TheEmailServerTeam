@@ -1,5 +1,7 @@
 package Views;
 
+import Services.Validator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +19,8 @@ public class LoginView extends JFrame implements ActionListener{
     private JButton cancelBtn, loginBtn;
     private JTextField emailTxtF;
     private JPasswordField passwordTxtF;
+
+    private Validator validator;
 
     public LoginView()
     {
@@ -73,11 +77,15 @@ public class LoginView extends JFrame implements ActionListener{
 
         //define action to click loginBtn
         //define to get email from textField
-        if(e.getSource().equals(this.loginBtn))
-        {
-            String emailFormat = "";//format test?
+        if(e.getSource().equals(this.loginBtn)) {
+            String emailFormat = ""; //format test?
             String email = this.emailTxtF.getText().trim();
-            String password = this.passwordTxtF.getText().trim();
+            String password = this.passwordTxtF.getSelectedText();
+            validator = new Validator();
+            validator.validateEmail(email, password);
+
+
+
         }
     }
 }
