@@ -11,7 +11,7 @@ import java.awt.event.*;
  */
 public class InboxView extends JFrame implements ActionListener{
 
-    private JButton inboxBtn, writeBtn;
+    private JButton updateBtn, writeBtn;
     private String []headerTitle = {"Date","Email Address","Subject"};
     //private String []emailData = {"mail@sample.com","subjectExample"};
     private JTable inboxTable;
@@ -37,11 +37,11 @@ public class InboxView extends JFrame implements ActionListener{
     {
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel,BoxLayout.Y_AXIS));
-        this.inboxBtn = new JButton("Inbox");
-        this.inboxBtn.addActionListener(this);
-        this.writeBtn = new JButton("Write ");
+        this.updateBtn = new JButton("Update");
+        this.updateBtn.addActionListener(this);
+        this.writeBtn = new JButton(" Write ");
         this.writeBtn.addActionListener(this);
-        leftPanel.add(inboxBtn);
+        leftPanel.add(updateBtn);
         leftPanel.add(writeBtn);
 
         JPanel rightPanel = new JPanel();//right side of window
@@ -95,7 +95,7 @@ public class InboxView extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         //to define the inbox button
-        if(e.getSource().equals(inboxBtn))
+        if(e.getSource().equals(updateBtn))
         {
             JOptionPane.showMessageDialog(this, "it it under construction!", "Info", JOptionPane.INFORMATION_MESSAGE);
         }

@@ -22,7 +22,7 @@ public class WriteNewEmailView extends JFrame implements ActionListener{
 
     public void openWindow()
     {
-        setTitle("Inbox");
+        setTitle("Write new email");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(680, 400);//size of window
         add(createUIComponents());
