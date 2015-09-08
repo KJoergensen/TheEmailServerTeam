@@ -77,7 +77,11 @@ public class LoginView extends JFrame implements ActionListener{
         {
             String emailFormat = "";//format test?
             String email = this.emailTxtF.getText().trim();
-            char [] password = this.passwordTxtF.getPassword();
+            String password = this.passwordTxtF.getSelectedText();
+
+
+
+
         }
     }
 }

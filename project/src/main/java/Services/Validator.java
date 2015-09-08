@@ -14,6 +14,7 @@ public class Validator
 {
     // TODO: Validate email method
 
+
     public boolean validateCorrectEmailEnding(String email) {
         if (!email.isEmpty()) {
             int emailLength = email.length();
