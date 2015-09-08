@@ -6,4 +6,9 @@ package Controllers;
 public class LoginController {
 
     // Metode der returner et svar fra googles mailserver
+    // TODO: Method that adds new line to log (login attempted)
+    // TODO: Method that adds new line to log (login completed)
+    // TODO: Method that adds new line to log (login denied)
+
+
 }

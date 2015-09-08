@@ -33,4 +33,7 @@ public class InboxController
 
         return inbox;
     }
+
+    // TODO: Method that adds new line to log (new email)
+    // TODO: Method that adds new line to log (update inbox)
 }
