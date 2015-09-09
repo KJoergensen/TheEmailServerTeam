@@ -18,9 +18,11 @@ public class Validator
     public boolean validateCorrectEmailEnding(String email) {
         if (!email.isEmpty()) {
             int emailLength = email.length();
+            System.out.println("mail: " + email);
             if (email.subSequence(emailLength-10, emailLength) == "@gmail.com") {
                 return true;
             } else {
+                System.out.println("false? "+ email);
                 return false;
             }
 
@@ -29,7 +31,7 @@ public class Validator
         }
     }
 
-    public String validateEmail(String username, String password) {
+    public void validateEmail(String username, String password) {
         if (validateCorrectEmailEnding(username)) {
             int port = 587;
             String host = "smtp.gmail.com";
@@ -47,20 +49,20 @@ public class Validator
                 transport.connect(host, port, user, pwd);
                 transport.close();
                 System.out.println("Login succesfull");
-                return "Succes";
+                //return "Succes";
 
             } catch (AuthenticationFailedException e) {
-                System.out.println("Login failed");
+                System.out.println("Login failed"+ user + "and" + pwd);
                 e.printStackTrace();
-                return "Failed";
+               // return "Failed";
             } catch (MessagingException e) {
                 e.printStackTrace();
                 System.out.println("Unknown login failure");
-                return "Failed";
+                //return "Failed";
             }
         } else {
             System.out.println("You suck!");
-            return("You suck at logging in!");
+            //return("You suck at logging in!");
         }
 
 
