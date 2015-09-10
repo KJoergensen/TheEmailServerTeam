@@ -31,8 +31,8 @@ public class Validator
         }
     }
 
-    public void validateEmail(String username, String password) {
-        if (validateCorrectEmailEnding(username)) {
+    public String validateEmail(String username, String password) {
+//        if (validateCorrectEmailEnding(username)) {
             int port = 587;
             String host = "smtp.gmail.com";
             String user = username;
@@ -49,21 +49,21 @@ public class Validator
                 transport.connect(host, port, user, pwd);
                 transport.close();
                 System.out.println("Login succesfull");
-                //return "Succes";
+                return "succes";
 
             } catch (AuthenticationFailedException e) {
-                System.out.println("Login failed"+ user + "and" + pwd);
+                System.out.println("Login failed "+ user + " and ");// + pwd);
                 e.printStackTrace();
-               // return "Failed";
+                return "authenticate failed";
             } catch (MessagingException e) {
                 e.printStackTrace();
                 System.out.println("Unknown login failure");
-                //return "Failed";
+                return "unexpected fail";
             }
-        } else {
-            System.out.println("You suck!");
-            //return("You suck at logging in!");
-        }
+//        } else {
+//            System.out.println("You suck!");
+//            return("You suck at logging in!");
+//        }
 
 
     }

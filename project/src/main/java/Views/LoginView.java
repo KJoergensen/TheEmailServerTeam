@@ -47,11 +47,14 @@ public class LoginView extends JFrame implements ActionListener{
         northPanel.add(emailLabel);
         northPanel.add(emailTxtF);
 
+
         JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JLabel passwordLabel = new JLabel("Password");
         this.passwordTxtF = new JPasswordField(20);
+
         centerPanel.add(passwordLabel);
         centerPanel.add(passwordTxtF);
+
 
         JPanel southPanel = new JPanel(new FlowLayout());
         this.loginBtn = new JButton(LOGIN);
@@ -83,38 +86,38 @@ public class LoginView extends JFrame implements ActionListener{
         if(e.getSource()==this.loginBtn)
         {
             String email = this.emailTxtF.getText().trim();
-            String password = this.passwordTxtF.getSelectedText();
+            char[] pass = this.passwordTxtF.getPassword();
+            String password = new String(pass);
 
-            boolean isGmail = validator.validateCorrectEmailEnding(email);
-            System.out.println("is it gmail?" + email + " " + isGmail);
 
-            if(isGmail == false);
+            System.out.println("try validateEmail");
+            String authenticate = validator.validateEmail(email, password);
+            if(authenticate == "succes")
             {
-                System.out.println("is it gmail?" + email +" "+isGmail);
-                JOptionPane.showMessageDialog(this, "Email have to be gmail address", "Error", JOptionPane.ERROR_MESSAGE);
-
-
+                System.out.println("LoginView constructor");
+                new InboxView(email, password);
+            }
+            else if(authenticate == "authenticate failed")
+            {
+                JOptionPane.showMessageDialog(this, "Please check your email and password!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+                else if(authenticate == "unexpected fail")
+            {
+                JOptionPane.showMessageDialog(this, "Please check your internet connection!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Please check your brain!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
 
-            if(isGmail == true)
-            {
-                try
-                {
-                    System.out.println("try validateEmail");
-                    validator.validateEmail(email, password);
-                    setEnabled(false);
-                    JOptionPane.showMessageDialog(this, "Connected!", "Info",
-                            JOptionPane.INFORMATION_MESSAGE);
-                }
-                catch (Exception exception)
-                {
-                    exception.printStackTrace();
-                    System.out.println("login: something wrong");
-                    JOptionPane.showMessageDialog(this, "Please check your email address or password.", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-            }
+                setEnabled(false);
 
         }
+
+
+
     }
 }
