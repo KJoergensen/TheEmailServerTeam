@@ -23,7 +23,13 @@ public class EmailReceiver
     String port = "993";
     private Email email;
     private InboxView inboxView;
-    private ArrayList<Email> list = new ArrayList<Email>();
+    private ArrayList<Email> list;
+
+    public EmailReceiver() {
+
+        inboxView = new InboxView(email);
+
+    }
 
     public ArrayList<Email> getEmails ()
     {
@@ -55,10 +61,8 @@ public class EmailReceiver
                 Address[] fromAddress = msg.getFrom();
                 String from = fromAddress[0].toString();
                 String subject = msg.getSubject();
-                String toList = parseAddresses(msg
-                        .getRecipients(Message.RecipientType.TO));
-                String ccList = parseAddresses(msg
-                        .getRecipients(RecipientType.CC));
+                String toList = parseAddresses(msg.getRecipients(Message.RecipientType.TO));
+                String ccList = parseAddresses(msg.getRecipients(RecipientType.CC));
                 Date sentDate = msg.getSentDate();
 
                 String contentType = msg.getContentType();
@@ -86,9 +90,11 @@ public class EmailReceiver
                 //System.out.println("\t Sent Date: " + sentDate);
                 System.out.println("\t Message: " + messageContent);
                 email = new Email(i, toList, from, subject, messageContent, sentDate, true);
-                list.add(email);
+                System.out.println("email " + email);
+                //list.add(email);
+                inboxView.showInboxMessage(email);
             }
-            inboxView.showInboxMessage(getEmails());
+
 
             // disconnect
             folderInbox.close(false);
@@ -100,6 +106,7 @@ public class EmailReceiver
             System.out.println("Could not connect to the message store");
             ex.printStackTrace();
         }
+
     }
 
     private Properties getServerProperties(String protocol, String host, String port) {

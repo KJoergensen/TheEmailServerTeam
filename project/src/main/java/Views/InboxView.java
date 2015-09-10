@@ -18,22 +18,17 @@ public class InboxView extends JFrame implements ActionListener{
 
     private JButton updateBtn, writeBtn;
     private String []headerTitle = {"Date","Email Address","Subject"};
-    //private String []emailData = {"mail@sample.com","subjectExample"};
     private JTable inboxTable;
     private DefaultTableModel tableModel;
     private TextArea messageTxtArea;
+    private Email email;
 
-    public InboxView(String userName, String password)
+    public InboxView(Email email)
     {
-        EmailReceiver emailReceiver = new EmailReceiver();
-        try {
-            emailReceiver.downloadEmails(userName, password);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        this.email = email;
         openWindow();
         clickEmailAndSubjectListener();
+
     }
 
     public void openWindow()
@@ -106,19 +101,28 @@ public class InboxView extends JFrame implements ActionListener{
         return splitPane;
     }
 
-    public void showInboxMessage(ArrayList<Email> emails)
+    public void showInboxMessage(Email email)
     {
         int row = 0;
-        for(Email email : emails)
-        {
-            String getDate = email.getDate().toString();
+
+        String getDate = email.getDate().toString();
             String emailFrom = email.getFrom();
             String subject = email.getSubject();
             System.out.println(getDate + " " + emailFrom + " " + subject);
             this.tableModel.setValueAt(getDate,row,0);
             this.tableModel.setValueAt(emailFrom,row,1);
             this.tableModel.setValueAt(subject,row, 2);
-        }
+
+//        for(Email email : emails)
+//        {
+//            String getDate = email.getDate().toString();
+//            String emailFrom = email.getFrom();
+//            String subject = email.getSubject();
+//            System.out.println(getDate + " " + emailFrom + " " + subject);
+//            this.tableModel.setValueAt(getDate,row,0);
+//            this.tableModel.setValueAt(emailFrom,row,1);
+//            this.tableModel.setValueAt(subject,row, 2);
+//        }
 
 
     }
@@ -146,15 +150,10 @@ public class InboxView extends JFrame implements ActionListener{
                 int row = inboxTable.getSelectedRow();
                 int column = inboxTable.getSelectedColumn();
 
-
-                messageTxtArea.setText(row + "::" + "column" + column);
                 //have to define what happen after click the email and subject
                 System.out.println("Row" + row + "::" + "column" + column);
-//                if(row == messageId)
-//                    showmessage;
-
-
-
+                String value = (String) tableModel.getValueAt(row,column);
+                messageTxtArea.setText(value);
 
 
             }

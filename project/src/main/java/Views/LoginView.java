@@ -1,6 +1,7 @@
 package Views;
 
 import Services.Validator;
+import Utilities.EmailReceiver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -92,17 +93,25 @@ public class LoginView extends JFrame implements ActionListener{
 
             System.out.println("try validateEmail");
             String authenticate = validator.validateEmail(email, password);
-            if(authenticate == "succes")
+            if(authenticate.equals("succes"))
             {
                 System.out.println("LoginView constructor");
-                new InboxView(email, password);
+                dispose();
+
+                EmailReceiver emailReceiver = new EmailReceiver();
+                try {
+                    emailReceiver.downloadEmails(email,password);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
             }
-            else if(authenticate == "authenticate failed")
+            else if(authenticate.equals("authenticate failed"))
             {
                 JOptionPane.showMessageDialog(this, "Please check your email and password!", "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
-                else if(authenticate == "unexpected fail")
+                else if(authenticate.equals("unexpected fail"))
             {
                 JOptionPane.showMessageDialog(this, "Please check your internet connection!", "Error",
                         JOptionPane.ERROR_MESSAGE);
