@@ -1,8 +1,10 @@
 package Utilities;
 
 import Models.Email;
+import Views.InboxView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 import javax.mail.Address;
 import javax.mail.Folder;
@@ -16,20 +18,29 @@ import javax.mail.Store;
 
 public class EmailReceiver
 {
-    String protocol = "imaps";
-    String host = "google";
-    String port = "1337";
+    String protocol = "imap";
+    String host = "imap.gmail.com";
+    String port = "993";
+    private Email email;
+    private InboxView inboxView;
+    private ArrayList<Email> list;
+
+    public EmailReceiver() {
+
+        inboxView = new InboxView(email);
+
+    }
 
     public ArrayList<Email> getEmails ()
     {
-        ArrayList<Email> list = new ArrayList<Email>();
+        list = new ArrayList<Email>();
 
         // TODO: Some method that contacts gmail server
 
         return list;
     }
 
-    public void downloadEmails(String userName, String password, int id, ArrayList<Email> list) throws Exception {
+    public void downloadEmails(String userName, String password) throws Exception {
         Properties properties = getServerProperties(protocol, host, port);
         Session session = Session.getDefaultInstance(properties);
 
@@ -50,11 +61,9 @@ public class EmailReceiver
                 Address[] fromAddress = msg.getFrom();
                 String from = fromAddress[0].toString();
                 String subject = msg.getSubject();
-                String toList = parseAddresses(msg
-                        .getRecipients(Message.RecipientType.TO));
-                String ccList = parseAddresses(msg
-                        .getRecipients(RecipientType.CC));
-                String sentDate = msg.getSentDate().toString();
+                String toList = parseAddresses(msg.getRecipients(Message.RecipientType.TO));
+                String ccList = parseAddresses(msg.getRecipients(RecipientType.CC));
+                Date sentDate = msg.getSentDate();
 
                 String contentType = msg.getContentType();
                 String messageContent = "";
@@ -78,9 +87,14 @@ public class EmailReceiver
                 System.out.println("\t To: " + toList);
                 System.out.println("\t CC: " + ccList);
                 System.out.println("\t Subject: " + subject);
-                System.out.println("\t Sent Date: " + sentDate);
+                //System.out.println("\t Sent Date: " + sentDate);
                 System.out.println("\t Message: " + messageContent);
+                email = new Email(i, toList, from, subject, messageContent, sentDate, true);
+                System.out.println("email " + email);
+                //list.add(email);
+                inboxView.showInboxMessage(email);
             }
+
 
             // disconnect
             folderInbox.close(false);
@@ -92,10 +106,10 @@ public class EmailReceiver
             System.out.println("Could not connect to the message store");
             ex.printStackTrace();
         }
+
     }
 
-    private Properties getServerProperties(String protocol, String host,
-                                           String port) {
+    private Properties getServerProperties(String protocol, String host, String port) {
         Properties properties = new Properties();
 
         // server setting

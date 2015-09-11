@@ -3,22 +3,24 @@ package Models;
 import java.util.Date;
 
 public class Email {
-    public String to;
-    public String from;
-    public String subject;
-    public String body;
-    public int id;
-    public Date date;
-    public boolean newEmail; // To check if read/unread
 
-    public Email() {}
+    private int id;
+    private String to;
+    private String from;
+    private String subject;
+    private String body;
+    private Date date;
+    private boolean newEmail; // To check if read/unread
 
-    public Email(String to, String from, String subject, String body, int id, Date date, boolean newEmail) {
+
+
+    public Email(int id, String to, String from, String subject, String body,  Date date, boolean newEmail) {
+
+        this.id = id;
         this.to = to;
         this.from = from;
         this.subject = subject;
         this.body = body;
-        this.id = id;
         this.date = date;
         this.newEmail = newEmail;
     }

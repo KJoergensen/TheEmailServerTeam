@@ -1,9 +1,13 @@
 package Views;
 
+import Services.Validator;
+import Utilities.EmailReceiver;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 
 /***
@@ -17,6 +21,7 @@ public class LoginView extends JFrame implements ActionListener{
     private JButton cancelBtn, loginBtn;
     private JTextField emailTxtF;
     private JPasswordField passwordTxtF;
+    private Validator validator = new Validator();
 
     public LoginView()
     {
@@ -43,15 +48,20 @@ public class LoginView extends JFrame implements ActionListener{
         northPanel.add(emailLabel);
         northPanel.add(emailTxtF);
 
+
         JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JLabel passwordLabel = new JLabel("Password");
         this.passwordTxtF = new JPasswordField(20);
+
         centerPanel.add(passwordLabel);
         centerPanel.add(passwordTxtF);
 
+
         JPanel southPanel = new JPanel(new FlowLayout());
         this.loginBtn = new JButton(LOGIN);
+        this.loginBtn.addActionListener(this);
         this.cancelBtn = new JButton(CANCEL);
+        this.cancelBtn.addActionListener(this);
         southPanel.add(loginBtn);
         southPanel.add(cancelBtn);
 
@@ -69,19 +79,54 @@ public class LoginView extends JFrame implements ActionListener{
         if(e.getSource().equals(this.cancelBtn))
         {
             dispose();
+
         }
 
         //define action to click loginBtn
         //define to get email from textField
-        if(e.getSource().equals(this.loginBtn))
+        if(e.getSource()==this.loginBtn)
         {
-            String emailFormat = "";//format test?
             String email = this.emailTxtF.getText().trim();
-            String password = this.passwordTxtF.getSelectedText();
+            char[] pass = this.passwordTxtF.getPassword();
+            String password = new String(pass);
 
 
+            System.out.println("try validateEmail");
+            String authenticate = validator.validateEmail(email, password);
+            if(authenticate.equals("succes"))
+            {
+                System.out.println("LoginView constructor");
+                dispose();
 
+                EmailReceiver emailReceiver = new EmailReceiver();
+                try {
+                    emailReceiver.downloadEmails(email,password);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+            else if(authenticate.equals("authenticate failed"))
+            {
+                JOptionPane.showMessageDialog(this, "Please check your email and password!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+                else if(authenticate.equals("unexpected fail"))
+            {
+                JOptionPane.showMessageDialog(this, "Please check your internet connection!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Please check your brain!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+                setEnabled(false);
 
         }
+
+
+
     }
 }
