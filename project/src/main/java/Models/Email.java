@@ -12,7 +12,10 @@ public class Email {
     private Date date;
     private boolean newEmail; // To check if read/unread
 
+    public Email()
+    {
 
+    }
 
     public Email(int id, String to, String from, String subject, String body,  Date date, boolean newEmail) {
 

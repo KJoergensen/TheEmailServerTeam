@@ -25,11 +25,9 @@ public class EmailReceiver
     private InboxView inboxView;
     private ArrayList<Email> list;
 
-    public EmailReceiver() {
-
-        inboxView = new InboxView(email);
-
-    }
+    //public EmailReceiver() {
+    //    inboxView = new InboxView(email);
+    //}
 
     public ArrayList<Email> getEmails ()
     {
@@ -40,7 +38,7 @@ public class EmailReceiver
         return list;
     }
 
-    public void downloadEmails(String userName, String password) throws Exception {
+    public Email downloadEmails(String userName, String password) throws Exception {
         Properties properties = getServerProperties(protocol, host, port);
         Session session = Session.getDefaultInstance(properties);
 
@@ -92,7 +90,8 @@ public class EmailReceiver
                 email = new Email(i, toList, from, subject, messageContent, sentDate, true);
                 System.out.println("email " + email);
                 //list.add(email);
-                inboxView.showInboxMessage(email);
+                //inboxView.showInboxMessage(email);
+                return email;
             }
 
 
@@ -106,7 +105,7 @@ public class EmailReceiver
             System.out.println("Could not connect to the message store");
             ex.printStackTrace();
         }
-
+        return new Email();
     }
 
     private Properties getServerProperties(String protocol, String host, String port) {

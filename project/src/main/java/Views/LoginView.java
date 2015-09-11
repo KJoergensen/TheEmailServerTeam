@@ -1,5 +1,6 @@
 package Views;
 
+import Controllers.LoginController;
 import Services.Validator;
 import Utilities.EmailReceiver;
 
@@ -21,7 +22,8 @@ public class LoginView extends JFrame implements ActionListener{
     private JButton cancelBtn, loginBtn;
     private JTextField emailTxtF;
     private JPasswordField passwordTxtF;
-    private Validator validator = new Validator();
+    private LoginController controller;
+
 
     public LoginView()
     {
@@ -74,44 +76,29 @@ public class LoginView extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-
         //click cancel button
         if(e.getSource().equals(this.cancelBtn))
         {
             dispose();
-
         }
 
         //define action to click loginBtn
         //define to get email from textField
         if(e.getSource()==this.loginBtn)
         {
-            String email = this.emailTxtF.getText().trim();
-            char[] pass = this.passwordTxtF.getPassword();
-            String password = new String(pass);
+            controller = new LoginController();
 
-
-            System.out.println("try validateEmail");
-            String authenticate = validator.validateEmail(email, password);
-            if(authenticate.equals("succes"))
+            if(controller.validateLogin(this.emailTxtF.getText().trim(), this.passwordTxtF.getPassword()).equals("success"))
             {
-                System.out.println("LoginView constructor");
                 dispose();
-
-                EmailReceiver emailReceiver = new EmailReceiver();
-                try {
-                    emailReceiver.downloadEmails(email,password);
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-
+                controller.launchInbox();
             }
-            else if(authenticate.equals("authenticate failed"))
+            else if(controller.validateLogin(this.emailTxtF.getText().trim(), this.passwordTxtF.getPassword()).equals("authenticate failed"))
             {
                 JOptionPane.showMessageDialog(this, "Please check your email and password!", "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
-                else if(authenticate.equals("unexpected fail"))
+                else if(controller.validateLogin(this.emailTxtF.getText().trim(), this.passwordTxtF.getPassword()).equals("unexpected fail"))
             {
                 JOptionPane.showMessageDialog(this, "Please check your internet connection!", "Error",
                         JOptionPane.ERROR_MESSAGE);
@@ -122,7 +109,7 @@ public class LoginView extends JFrame implements ActionListener{
                         JOptionPane.ERROR_MESSAGE);
             }
 
-                setEnabled(false);
+            setEnabled(false);
 
         }
 

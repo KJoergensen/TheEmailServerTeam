@@ -1,5 +1,6 @@
 package Services;
 
+import Models.User;
 
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
@@ -15,7 +16,7 @@ public class Validator
     // TODO: Validate email method
 
 
-    public boolean validateCorrectEmailEnding(String email) {
+    private static boolean validateCorrectEmailEnding(String email) {
         if (!email.isEmpty()) {
             int emailLength = email.length();
             System.out.println("mail: " + email);
@@ -31,12 +32,10 @@ public class Validator
         }
     }
 
-    public String validateEmail(String username, String password) {
-        if (validateCorrectEmailEnding(username)) {
+    public static String validateUser(User user) {
+        if (validateCorrectEmailEnding(user.getUsername())) {
             int port = 587;
             String host = "smtp.gmail.com";
-            String user = username;
-            String pwd = password;
 
             try {
                 Properties props = new Properties();
@@ -46,13 +45,13 @@ public class Validator
                 // or use getDefaultInstance instance if desired...
                 Session session = Session.getInstance(props, null);
                 Transport transport = session.getTransport("smtp");
-                transport.connect(host, port, user, pwd);
+                transport.connect(host, port, user.getUsername(), user.getPassword());
                 transport.close();
                 System.out.println("Login succesfull");
-                return "succes";
+                return "success";
 
             } catch (AuthenticationFailedException e) {
-                System.out.println("Login failed "+ user + " and ");// + pwd);
+                System.out.println("Login failed "+ user.getUsername() + " and ");// + pwd);
                 e.printStackTrace();
                 return "authenticate failed";
             } catch (MessagingException e) {
