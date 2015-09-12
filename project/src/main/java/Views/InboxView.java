@@ -14,7 +14,7 @@ import java.awt.event.*;
 /***
  * Created by Hisayo on 04/09/15.
  */
-public class InboxView extends JFrame implements ActionListener{
+public class InboxView extends JFrame implements ActionListener, MouseListener{
 
     private JButton updateBtn, writeBtn;
     private String []headerTitle = {"Date","Email Address","Subject"};
@@ -25,19 +25,17 @@ public class InboxView extends JFrame implements ActionListener{
 
     public InboxView(Email email)
     {
-        this.email = email;
+        //this.email = email;
         openWindow();
-        clickEmailAndSubjectListener();
-
     }
 
     public void openWindow()
     {
         setTitle("Inbox");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(1000, 500);//size of window
+        setSize(1200, 740);//size of window
         add(createUIComponents());
-        setResizable(true);
+        setResizable(false);
         setVisible(true);
     }
 
@@ -62,12 +60,13 @@ public class InboxView extends JFrame implements ActionListener{
 
         //model set in table
         this.inboxTable = new JTable(tableModel);
+        this.inboxTable.addMouseListener(this);
 
         //make a hedder size to the table
         int[] width = new int[this.headerTitle.length];
-        width[0]=50;
-        width[1]=100;
-        width[2]=700;
+        width[0]=130;
+        width[1]=270;
+        width[2]=680;
         for(int i = 0; i<width.length;i++)
         {
             TableColumn column = inboxTable.getColumnModel().getColumn(i);
@@ -75,17 +74,15 @@ public class InboxView extends JFrame implements ActionListener{
             column.setMaxWidth(width[i]);
         }
 
-        //need to define arrayList<Email> and tableModel.setValueAt();
-
-
         //you can scroll the table
         JScrollPane scrollPane = new JScrollPane(inboxTable);
-        scrollPane.setPreferredSize(new Dimension(850,200));//it effects to make size of table
+        scrollPane.setPreferredSize(new Dimension(1080,350));//it effects to make size of table
         northPanel.add(scrollPane);
 
         JPanel southPanel = new JPanel();//message textArea
         this.messageTxtArea = new TextArea();
-        messageTxtArea.setPreferredSize(new Dimension(850,200));
+        messageTxtArea.setPreferredSize(new Dimension(1080,350));
+        messageTxtArea.setEditable(false);
         southPanel.add(messageTxtArea);
 
 
@@ -106,24 +103,13 @@ public class InboxView extends JFrame implements ActionListener{
         int row = 0;
 
         String getDate = email.getDate().toString();
-            String emailFrom = email.getFrom();
-            String subject = email.getSubject();
-            System.out.println(getDate + " " + emailFrom + " " + subject);
-            this.tableModel.setValueAt(getDate,row,0);
-            this.tableModel.setValueAt(emailFrom,row,1);
-            this.tableModel.setValueAt(subject,row, 2);
+        String emailFrom = email.getFrom();
+        String subject = email.getSubject();
 
-//        for(Email email : emails)
-//        {
-//            String getDate = email.getDate().toString();
-//            String emailFrom = email.getFrom();
-//            String subject = email.getSubject();
-//            System.out.println(getDate + " " + emailFrom + " " + subject);
-//            this.tableModel.setValueAt(getDate,row,0);
-//            this.tableModel.setValueAt(emailFrom,row,1);
-//            this.tableModel.setValueAt(subject,row, 2);
-//        }
-
+        System.out.println(getDate + " " + emailFrom + " " + subject);
+        this.tableModel.setValueAt(getDate,row,0);
+        this.tableModel.setValueAt(emailFrom,row,1);
+        this.tableModel.setValueAt(subject,row, 2);
 
     }
 
@@ -140,23 +126,32 @@ public class InboxView extends JFrame implements ActionListener{
         }
     }
 
-    public void clickEmailAndSubjectListener()
-    {
-        //MouseListener
-        this.inboxTable.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                int row = inboxTable.getSelectedRow();
-                int column = inboxTable.getSelectedColumn();
+// Mouse Actionlistener
+    public void mouseClicked(MouseEvent e) {
 
-                //have to define what happen after click the email and subject
-                System.out.println("Row" + row + "::" + "column" + column);
-                String value = (String) tableModel.getValueAt(row,column);
-                messageTxtArea.setText(value);
+        int row = inboxTable.getSelectedRow();
+        int column = inboxTable.getSelectedColumn();
 
+        //have to define what happen after click the email and subject
+        System.out.println("Row" + row + "::" + "column" + column);
+        String value = (String) tableModel.getValueAt(row,column);
+        messageTxtArea.setText(value);
 
-            }
-        });
+    }
+
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    public void mouseExited(MouseEvent e) {
+
     }
 }

@@ -54,6 +54,7 @@ public class LoginView extends JFrame implements ActionListener{
         JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JLabel passwordLabel = new JLabel("Password");
         this.passwordTxtF = new JPasswordField(20);
+        this.passwordTxtF.addActionListener(this);
 
         centerPanel.add(passwordLabel);
         centerPanel.add(passwordTxtF);
@@ -84,7 +85,7 @@ public class LoginView extends JFrame implements ActionListener{
 
         //define action to click loginBtn
         //define to get email from textField
-        if(e.getSource()==this.loginBtn)
+        if(e.getSource() == this.loginBtn || e.getSource() == this.passwordTxtF)
         {
             controller = new LoginController();
 
