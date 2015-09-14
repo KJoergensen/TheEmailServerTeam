@@ -14,9 +14,9 @@ import java.util.Date;
  */
 public class LogHandler implements Interfaces.DatabaseConnection
 {
-    String url = "jdbc:mysql://localhost:3306/testlog_db";
-    String username = "root";
-    String password = "test1234";
+    static String url = "jdbc:mysql://localhost:3306/testlog_db";
+    static String username = "root";
+    static String password = "test1234";
 
     public void addNewRow(Date date, String user, String message)
     {
@@ -67,15 +67,5 @@ public class LogHandler implements Interfaces.DatabaseConnection
                 se.printStackTrace();
             }
         }//end finally try
-
-
-
-       /* try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Database connected!");
-        } catch (SQLException e) {
-            throw new IllegalStateException("Cannot connect the database!", e);
-        }*/
-
     }
-
 }

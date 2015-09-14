@@ -6,14 +6,8 @@ import Views.InboxView;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
-import javax.mail.Address;
-import javax.mail.Folder;
-import javax.mail.Message;
+import javax.mail.*;
 import javax.mail.Message.RecipientType;
-import javax.mail.MessagingException;
-import javax.mail.NoSuchProviderException;
-import javax.mail.Session;
-import javax.mail.Store;
 
 
 public class EmailReceiver
@@ -29,16 +23,16 @@ public class EmailReceiver
     //    inboxView = new InboxView(email);
     //}
 
-    public ArrayList<Email> getEmails ()
-    {
-        list = new ArrayList<Email>();
+//    public ArrayList<Email> getEmails ()
+//    {
+//        list = new ArrayList<Email>();
+//
+//        // TODO: Some method that contacts gmail server
+//
+//        return list;
+//    }
 
-        // TODO: Some method that contacts gmail server
-
-        return list;
-    }
-
-    public Email downloadEmails(String userName, String password) throws Exception {
+    public ArrayList<Email> downloadEmails(String userName, String password) throws Exception {
         Properties properties = getServerProperties(protocol, host, port);
         Session session = Session.getDefaultInstance(properties);
 
@@ -53,6 +47,7 @@ public class EmailReceiver
 
             // fetches new messages from server
             Message[] messages = folderInbox.getMessages();
+            ArrayList<Email> list = new ArrayList<>();
 
             for (int i = 0; i < messages.length; i++) {
                 Message msg = messages[i];
@@ -62,21 +57,33 @@ public class EmailReceiver
                 String toList = parseAddresses(msg.getRecipients(Message.RecipientType.TO));
                 String ccList = parseAddresses(msg.getRecipients(RecipientType.CC));
                 Date sentDate = msg.getSentDate();
-
-                String contentType = msg.getContentType();
                 String messageContent = "";
 
-                if (contentType.contains("text/plain")
-                        || contentType.contains("text/html")) {
-                    try {
-                        Object content = msg.getContent();
-                        if (content != null) {
-                            messageContent = content.toString();
+                try {
+                    Object content = msg.getContent();
+
+                    // Most messages are sent as Multipart objects
+                    if (content instanceof Multipart)
+                    {
+                        // Iterating through bodyparts in Multipart object
+                        int count = ((Multipart) content).getCount();
+                        for (int x = 0; x < count; x++)
+                        {
+                            BodyPart part = ((Multipart) content).getBodyPart(x);
+                            if (part.isMimeType("text/plain"))
+                            {
+                                messageContent = (String)part.getContent();
+                            }
                         }
-                    } catch (Exception ex) {
-                        messageContent = "[Error downloading content]";
-                        ex.printStackTrace();
                     }
+                    else if (content != null)
+                    {
+                        messageContent = content.toString();
+                    }
+
+                } catch (Exception ex) {
+                    messageContent = "[Error downloading content]";
+                    ex.printStackTrace();
                 }
 
                 // print out details of each message
@@ -91,13 +98,15 @@ public class EmailReceiver
                 System.out.println("email " + email);
                 //list.add(email);
                 //inboxView.showInboxMessage(email);
-                return email;
+                list.add(email);
             }
-
 
             // disconnect
             folderInbox.close(false);
             store.close();
+
+            return list;
+
         } catch (NoSuchProviderException ex) {
             System.out.println("No provider for protocol: " + protocol);
             ex.printStackTrace();
@@ -105,7 +114,7 @@ public class EmailReceiver
             System.out.println("Could not connect to the message store");
             ex.printStackTrace();
         }
-        return new Email();
+        return new ArrayList<>();
     }
 
     private Properties getServerProperties(String protocol, String host, String port) {

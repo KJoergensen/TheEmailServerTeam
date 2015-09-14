@@ -1,6 +1,7 @@
 package Views;
 
 import Models.Email;
+import Models.User;
 import Utilities.EmailReceiver;
 
 import java.util.ArrayList;
@@ -21,12 +22,13 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
     private JTable inboxTable;
     private DefaultTableModel tableModel;
     private TextArea messageTxtArea;
-    private Email email;
+    private ArrayList<Email> emails;
 
-    public InboxView(Email email)
+    public InboxView(ArrayList<Email> emails)
     {
-        //this.email = email;
+        this.emails = emails;
         openWindow();
+        showInboxMessage(emails);
     }
 
     public void openWindow()
@@ -98,18 +100,25 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
         return splitPane;
     }
 
-    public void showInboxMessage(Email email)
+    public void showInboxMessage(ArrayList<Email> emails)
     {
+        this.tableModel.setNumRows(emails.size());
         int row = 0;
 
-        String getDate = email.getDate().toString();
-        String emailFrom = email.getFrom();
-        String subject = email.getSubject();
+        for (Email e : emails)
+        {
+            String getDate = e.getDate().toString();
+            String emailFrom = e.getFrom();
+            String subject = e.getSubject();
 
-        System.out.println(getDate + " " + emailFrom + " " + subject);
-        this.tableModel.setValueAt(getDate,row,0);
-        this.tableModel.setValueAt(emailFrom,row,1);
-        this.tableModel.setValueAt(subject,row, 2);
+            System.out.println(getDate + " " + emailFrom + " " + subject);
+
+            this.tableModel.setValueAt(getDate, row, 0);
+            this.tableModel.setValueAt(emailFrom,row,1);
+            this.tableModel.setValueAt(subject,row, 2);
+
+            row++;
+        }
 
     }
 

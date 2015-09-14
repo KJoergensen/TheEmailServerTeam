@@ -30,7 +30,7 @@ public class LoginController {
 
     public void launchInbox ()
     {
-        inboxController = new InboxController();
+        inboxController = new InboxController(user);
         emailReceiver = new EmailReceiver();
 
         try {
