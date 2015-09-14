@@ -105,7 +105,6 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
 
     public void showInboxMessage(ArrayList<Email> emails)
     {
-        this.emails = emails;
         this.tableModel.setNumRows(emails.size());
         int row = 0;
 
@@ -124,7 +123,7 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
             row++;
         }
         //should delete all old emails from the list
-        this.emails.removeAll(emails);
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -132,7 +131,8 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
         if(e.getSource().equals(updateBtn))
         {
             //JOptionPane.showMessageDialog(this, "it it under construction!", "Info", JOptionPane.INFORMATION_MESSAGE);
-            showInboxMessage(this.inboxController.updateInbox());
+            this.emails = this.inboxController.updateInbox();
+            showInboxMessage(this.emails);
         }
 
         if(e.getSource().equals(writeBtn))

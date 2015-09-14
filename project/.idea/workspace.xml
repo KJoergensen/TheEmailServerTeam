@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77f3262e-d656-42ca-8f74-3208fb613e12" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Controllers/InboxController.java" afterPath="$PROJECT_DIR$/src/main/java/Controllers/InboxController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Views/InboxView.java" afterPath="$PROJECT_DIR$/src/main/java/Views/InboxView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.iml" afterPath="$PROJECT_DIR$/project.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TheEmailServerTeam.iws" />
@@ -34,8 +28,8 @@
       <file leaf-file-name="InboxView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Views/InboxView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5189873">
-              <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.5647773">
+              <caret line="134" column="40" selection-start-line="134" selection-start-column="40" selection-end-line="134" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -45,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/InboxController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+              <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -65,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+              <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -77,7 +71,7 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <marker date="1442254633000" expanded="true" signature="237:239" placeholder="//..." />
               </folding>
             </state>
           </provider>
@@ -97,8 +91,11 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Utilities/EmailReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="18" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
-              <folding />
+              <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <marker date="1442254633000" expanded="true" signature="2577:2946" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,8 +130,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Run.java" />
         <option value="$PROJECT_DIR$/src/main/java/Views/LoginView.java" />
         <option value="$PROJECT_DIR$/project.iml" />
-        <option value="$PROJECT_DIR$/src/main/java/Controllers/InboxController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controllers/InboxController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Views/InboxView.java" />
       </list>
     </option>
@@ -696,7 +693,19 @@
       <option name="project" value="LOCAL" />
       <updated>1442091749578</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="you can click an email and system shows body in the textArea">
+      <created>1442254613593</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1442254613593</updated>
+    </task>
+    <task id="LOCAL-00016" summary="System shows new email in the inbox">
+      <created>1442260721420</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1442260721420</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -712,14 +721,14 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20789075" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20789075" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20485584" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1945098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23823975" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23823975" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -753,7 +762,9 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/KJoergensen/TheEmailServerTeam&#10;&#10;# Conflicts:&#10;#&#9;project/src/main/java/Run.java&#10;" />
     <MESSAGE value="Changed a code from string to char to getPassword()." />
     <MESSAGE value="added size of inboxTable. And you can use &quot;enter&quot; at passwordField to login." />
-    <option name="LAST_COMMIT_MESSAGE" value="added size of inboxTable. And you can use &quot;enter&quot; at passwordField to login." />
+    <MESSAGE value="you can click an email and system shows body in the textArea" />
+    <MESSAGE value="System shows new email in the inbox" />
+    <option name="LAST_COMMIT_MESSAGE" value="System shows new email in the inbox" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -793,7 +804,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1442254633000" expanded="true" signature="237:239" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -818,7 +829,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1442254633000" expanded="true" signature="2577:2946" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -907,7 +921,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1442254633000" expanded="true" signature="2577:2946" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -932,7 +949,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1442254633000" expanded="true" signature="237:239" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -1008,7 +1025,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1442254633000" expanded="true" signature="2577:2946" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1098,7 +1118,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1442254633000" expanded="true" signature="237:239" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -1154,15 +1174,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/InboxController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -1170,15 +1182,26 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Utilities/EmailReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="18" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
+          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1442254633000" expanded="true" signature="2577:2946" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/InboxController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Views/InboxView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5189873">
-          <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.5647773">
+          <caret line="134" column="40" selection-start-line="134" selection-start-column="40" selection-end-line="134" selection-end-column="40" />
           <folding />
         </state>
       </provider>
