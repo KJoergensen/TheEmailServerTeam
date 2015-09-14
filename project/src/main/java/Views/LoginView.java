@@ -106,7 +106,7 @@ public class LoginView extends JFrame implements ActionListener{
             }
             else
             {
-                JOptionPane.showMessageDialog(this, "Please check your brain!", "Error",
+                JOptionPane.showMessageDialog(this, "Please check your email and password!", "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
 
