@@ -3,10 +3,8 @@ package Services;
 import Interfaces.*;
 
 import javax.xml.soap.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.*;
 import java.util.Date;
 
 /**
@@ -14,11 +12,12 @@ import java.util.Date;
  */
 public class LogHandler implements Interfaces.DatabaseConnection
 {
-    static String url = "jdbc:mysql://localhost:3306/testlog_db";
-    static String username = "root";
-    static String password = "test1234";
+    private static String url = "jdbc:mysql://localhost:3306/testlog_db";
+    private static String username = "root";
+    private static String password = "test1234";
+    private static String table = "log2";
 
-    public void addNewRow(Date date, String user, String message)
+    public static void addNewRow(String user, String message)
     {
         Connection conn = null;
         Statement stmt = null;
@@ -27,11 +26,15 @@ public class LogHandler implements Interfaces.DatabaseConnection
         {
             System.out.println("Connecting database...");
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Connected database successfully...");
+            System.out.println("Connection to database successful...");
+            UUID id = UUID.randomUUID();
+            // Creating a timestamp in SQL format
+            java.util.Date date = new Date();
+            Timestamp timestamp = new Timestamp(date.getTime());
 
             stmt = conn.createStatement();
 
-            String sql = "INSERT INTO log VALUES (' " + user + "', '" + message + "')";
+            String sql = "INSERT INTO " + table + " VALUES ('" + id + "', '" + timestamp + "', '" + user + "', '" + message + "')";
             stmt.executeUpdate(sql);
 
             System.out.println("Inserted records into the table...");

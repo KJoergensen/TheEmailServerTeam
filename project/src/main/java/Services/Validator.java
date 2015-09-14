@@ -13,27 +13,32 @@ import java.util.Properties;
  */
 public class Validator
 {
-    // TODO: Validate email method
-
-
-    private static boolean validateCorrectEmailEnding(String email) {
-        if (!email.isEmpty()) {
+    private static boolean validateCorrectEmailEnding(String email)
+    {
+        if (!email.isEmpty())
+        {
             int emailLength = email.length();
             System.out.println("mail: " + email);
-            if (email.subSequence(emailLength-10, emailLength).equals("@gmail.com")) {
+            if (email.subSequence(emailLength-10, emailLength).equals("@gmail.com"))
+            {
                 return true;
-            } else {
+            }
+            else
+            {
                 System.out.println("false? "+ email);
                 return false;
             }
 
-        } else {
+        }
+        else {
             return false;
         }
     }
 
-    public static String validateUser(User user) {
-        if (validateCorrectEmailEnding(user.getUsername())) {
+    public static String validateUser(User user)
+    {
+        if (validateCorrectEmailEnding(user.getUsername()))
+        {
             int port = 587;
             String host = "smtp.gmail.com";
 
@@ -47,21 +52,27 @@ public class Validator
                 Transport transport = session.getTransport("smtp");
                 transport.connect(host, port, user.getUsername(), user.getPassword());
                 transport.close();
-                System.out.println("Login succesfull");
+                //System.out.println("Login successful");
+                LogHandler.addNewRow(user.getUsername(), "Validation successful");
                 return "success";
 
             } catch (AuthenticationFailedException e) {
-                System.out.println("Login failed "+ user.getUsername() + " and ");// + pwd);
+                //System.out.println("Login failed "+ user.getUsername() + " and ");// + pwd);
+                LogHandler.addNewRow(user.getUsername(), "Validation failed");
                 e.printStackTrace();
                 return "authenticate failed";
             } catch (MessagingException e) {
+                //System.out.println("Unknown login failure");
+                LogHandler.addNewRow(user.getUsername(), "Validation unexpected failure");
                 e.printStackTrace();
-                System.out.println("Unknown login failure");
                 return "unexpected fail";
             }
-        } else {
-            System.out.println("You suck!");
-            return("You suck at logging in!");
+        }
+        else
+        {
+            //System.out.println("Incorrect email address");
+            LogHandler.addNewRow(user.getUsername(), "Validation failed - Incorrect email adress");
+            return("Incorrect email address");
         }
 
 
