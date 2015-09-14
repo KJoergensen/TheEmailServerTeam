@@ -46,6 +46,7 @@ public class InboxController
         for (Email mail : newEmails)
         {
             inbox.add(mail);
+            System.out.println("update new email"+ mail);
         }
 
         return inbox;
