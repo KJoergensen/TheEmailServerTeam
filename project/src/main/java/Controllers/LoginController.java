@@ -34,7 +34,7 @@ public class LoginController {
         emailReceiver = new EmailReceiver();
 
         try {
-            inboxView = new InboxView(emailReceiver.downloadEmails(user.getUsername(), user.getPassword()));
+            inboxView = new InboxView(inboxController, emailReceiver.downloadEmails(user.getUsername(), user.getPassword()));
         } catch (Exception e1) {
             e1.printStackTrace();
         }

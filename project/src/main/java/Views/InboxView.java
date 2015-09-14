@@ -1,5 +1,6 @@
 package Views;
 
+import Controllers.InboxController;
 import Models.Email;
 import Models.User;
 import Utilities.EmailReceiver;
@@ -23,9 +24,11 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
     private DefaultTableModel tableModel;
     private TextArea messageTxtArea;
     private ArrayList<Email> emails;
+    private InboxController inboxController;
 
-    public InboxView(ArrayList<Email> emails)
+    public InboxView(InboxController inboxController, ArrayList<Email> emails)
     {
+        this.inboxController = inboxController;
         this.emails = emails;
         openWindow();
         showInboxMessage(emails);
@@ -78,12 +81,12 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
 
         //you can scroll the table
         JScrollPane scrollPane = new JScrollPane(inboxTable);
-        scrollPane.setPreferredSize(new Dimension(1080,350));//it effects to make size of table
+        scrollPane.setPreferredSize(new Dimension(1080,320));//it effects to make size of table
         northPanel.add(scrollPane);
 
         JPanel southPanel = new JPanel();//message textArea
         this.messageTxtArea = new TextArea();
-        messageTxtArea.setPreferredSize(new Dimension(1080,350));
+        messageTxtArea.setPreferredSize(new Dimension(1080,320));
         messageTxtArea.setEditable(false);
         southPanel.add(messageTxtArea);
 
@@ -126,25 +129,42 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
         //to define the inbox button
         if(e.getSource().equals(updateBtn))
         {
-            JOptionPane.showMessageDialog(this, "it it under construction!", "Info", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(this, "it it under construction!", "Info", JOptionPane.INFORMATION_MESSAGE);
+             this.inboxController.updateInbox();
+             showInboxMessage(emails);
         }
 
         if(e.getSource().equals(writeBtn))
         {
             new WriteNewEmailView();
         }
+
+
     }
 
 // Mouse Actionlistener
     public void mouseClicked(MouseEvent e) {
 
         int row = inboxTable.getSelectedRow();
-        int column = inboxTable.getSelectedColumn();
+        //int column = inboxTable.getSelectedColumn();
 
+        for(Email email : emails)
+        {
+            //int value = tableModel.getValueAt(row,0);
+            if (email.getId() == row)
+            {
+                System.out.println(email.getBody());
+                messageTxtArea.setText(email.getBody());
+
+            }
+
+
+
+        }
         //have to define what happen after click the email and subject
-        System.out.println("Row" + row + "::" + "column" + column);
-        String value = (String) tableModel.getValueAt(row,column);
-        messageTxtArea.setText(value);
+//        System.out.println("Row" + row + "::" + "column" + column);
+
+
 
     }
 
