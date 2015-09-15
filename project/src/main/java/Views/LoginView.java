@@ -98,16 +98,19 @@ public class LoginView extends JFrame implements ActionListener{
             {
                 JOptionPane.showMessageDialog(this, "Please check your email and password!", "Error",
                         JOptionPane.ERROR_MESSAGE);
+                return;
             }
                 else if(controller.validateLogin(this.emailTxtF.getText().trim(), this.passwordTxtF.getPassword()).equals("unexpected fail"))
             {
                 JOptionPane.showMessageDialog(this, "Please check your internet connection!", "Error",
                         JOptionPane.ERROR_MESSAGE);
+                return;
             }
             else
             {
                 JOptionPane.showMessageDialog(this, "Please check your email and password!", "Error",
                         JOptionPane.ERROR_MESSAGE);
+                return;
             }
 
             setEnabled(false);
