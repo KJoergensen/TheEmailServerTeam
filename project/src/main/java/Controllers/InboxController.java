@@ -23,7 +23,7 @@ public class InboxController
     public void sendEmail(Email email)
     {
         // TODO: Return Http status code
-        sender.sendEmail(email);
+        //sender.sendEmail(email);
     }
 
     public ArrayList<Email> updateInbox()

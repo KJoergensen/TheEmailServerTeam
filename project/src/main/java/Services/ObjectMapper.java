@@ -18,7 +18,7 @@ public class ObjectMapper
 {
     public static ArrayList<Email> mapObjects(Message[] messages) throws Exception
     {
-        ArrayList<Email> list = new ArrayList<>();
+        ArrayList<Email> list = new ArrayList<Email>();
 
         for (int i = 0; i < messages.length; i++)
         {

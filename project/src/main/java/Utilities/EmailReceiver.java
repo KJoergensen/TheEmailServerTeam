@@ -53,7 +53,7 @@ public class EmailReceiver
             ex.printStackTrace();
         }
 
-        return new ArrayList<>();
+        return new ArrayList<Email>();
     }
 
     private Properties getServerProperties(String protocol, String host, String port)

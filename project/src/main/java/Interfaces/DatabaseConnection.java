@@ -7,8 +7,8 @@ import java.util.Date;
  */
 public interface DatabaseConnection
 {
-    static void addNewRow(Date date, String user, String message) throws Exception
-    {
+   // static void addNewRow(Date date, String user, String message) throws Exception
+    //{
 
-    }
+    //}
 }
