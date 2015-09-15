@@ -25,6 +25,7 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
     private TextArea messageTxtArea;
     private ArrayList<Email> emails;
     private InboxController inboxController;
+    //private int row = 0;
 
     public InboxView(InboxController inboxController, ArrayList<Email> emails)
     {
@@ -105,6 +106,7 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
 
     public void showInboxMessage(ArrayList<Email> emails)
     {
+        this.emails = emails;
         this.tableModel.setNumRows(emails.size());
         int row = 0;
 
@@ -115,7 +117,9 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
             String subject = e.getSubject();
 
             System.out.println(getDate + " " + emailFrom + " " + subject);
+            System.out.println("Emails in the list : "+emails);
 
+            this.tableModel.fireTableDataChanged();
             this.tableModel.setValueAt(getDate, row, 0);
             this.tableModel.setValueAt(emailFrom,row,1);
             this.tableModel.setValueAt(subject,row, 2);
@@ -131,8 +135,8 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
         if(e.getSource().equals(updateBtn))
         {
             //JOptionPane.showMessageDialog(this, "it it under construction!", "Info", JOptionPane.INFORMATION_MESSAGE);
-            this.emails = this.inboxController.updateInbox();
-            showInboxMessage(this.emails);
+            showInboxMessage(this.inboxController.updateInbox());
+
         }
 
         if(e.getSource().equals(writeBtn))

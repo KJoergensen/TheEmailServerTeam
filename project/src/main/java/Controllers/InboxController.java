@@ -10,7 +10,7 @@ public class InboxController
 {
     public EmailReceiver receiver = new EmailReceiver();
     public EmailSender sender = new EmailSender();
-    public ArrayList<Email> inbox = new ArrayList<Email>();
+    public ArrayList<Email> inbox;
     private User user;
 
 
@@ -39,6 +39,7 @@ public class InboxController
             e.printStackTrace();
         }
 
+        this.inbox = new ArrayList<Email>();
         // Removing all duplicates
         newEmails.removeAll(inbox);
 
