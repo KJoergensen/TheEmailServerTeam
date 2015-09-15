@@ -25,12 +25,14 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
     private TextArea messageTxtArea;
     private ArrayList<Email> emails;
     private InboxController inboxController;
+    private User user;
     //private int row = 0;
 
-    public InboxView(InboxController inboxController, ArrayList<Email> emails)
+    public InboxView(InboxController inboxController, ArrayList<Email> emails, User user)
     {
         this.inboxController = inboxController;
         this.emails = emails;
+        this.user = user;
         openWindow();
         showInboxMessage(emails);
     }
@@ -141,8 +143,20 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
 
         if(e.getSource().equals(writeBtn))
         {
-            new WriteNewEmailView();
+            try
+            {
+                new WriteNewEmailView(user);
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+
         }
+
+
+
+
 
 
     }

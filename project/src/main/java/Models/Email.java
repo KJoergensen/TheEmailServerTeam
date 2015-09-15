@@ -17,6 +17,8 @@ public class Email {
 
     }
 
+
+
     public Email(int id, String to, String from, String subject, String body,  Date date, boolean newEmail) {
 
         this.id = id;

@@ -16,7 +16,7 @@ public class EmailSender
         String to = email.getTo();//change accordingly
 
         // Sender's email ID needs to be mentioned
-        String from = email.getFrom();//change accordingly
+        String from = user.getUsername();//change accordingly
         final String username = user.getUsername();//change accordingly
         final String password = user.getPassword();//change accordingly
 
