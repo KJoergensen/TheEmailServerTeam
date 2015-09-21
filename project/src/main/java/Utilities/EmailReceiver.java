@@ -20,7 +20,7 @@ public class EmailReceiver
     private InboxView inboxView;
     private ArrayList<Email> list;
 
-    public ArrayList<Email> downloadEmails(String userName, String password) throws Exception
+    public ArrayList<Email> downloadEmails(String userName, String password)
     {
         Properties properties = getServerProperties(protocol, host, port);
         Session session = Session.getDefaultInstance(properties);
@@ -51,6 +51,9 @@ public class EmailReceiver
         } catch (MessagingException ex) {
             System.out.println("Could not connect to the message store");
             ex.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Could not map the messages");
+            e.printStackTrace();
         }
 
         return new ArrayList<Email>();
