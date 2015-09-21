@@ -13,16 +13,8 @@ import java.util.Properties;
  */
 public class Validator
 {
-    private static boolean validateCorrectEmailEnding(String email)
-    {
-        if (!email.isEmpty())
-        {
-            int emailLength = email.length();
-            return email.length() > 9 && email.subSequence(emailLength - 10, emailLength).equals("@gmail.com");
-        }
-        else {
-            return false;
-        }
+    private static boolean validateCorrectEmailEnding(String email) {
+        return !email.isEmpty() && email.length() > 9 && email.subSequence(email.length() - 10, email.length()).equals("@gmail.com");
     }
 
     public static String validateUser(User user)
