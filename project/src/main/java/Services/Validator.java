@@ -18,17 +18,7 @@ public class Validator
         if (!email.isEmpty())
         {
             int emailLength = email.length();
-            System.out.println("mail: " + email);
-            if (email.subSequence(emailLength-10, emailLength).equals("@gmail.com"))
-            {
-                return true;
-            }
-            else
-            {
-                System.out.println("false? "+ email);
-                return false;
-            }
-
+            return email.length() > 9 && email.subSequence(emailLength - 10, emailLength).equals("@gmail.com");
         }
         else {
             return false;
@@ -72,7 +62,7 @@ public class Validator
         {
             //System.out.println("Incorrect email address");
             LogHandler.addNewRow(user.getUsername(), "Validation failed - Incorrect email adress");
-            return("Incorrect email address");
+            return("Incorrect Credentials");
         }
 
 
