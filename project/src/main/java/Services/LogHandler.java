@@ -24,9 +24,9 @@ public class LogHandler implements Interfaces.DatabaseConnection
 
         try
         {
-            System.out.println("Connecting database...");
+//            System.out.println("Connecting database...");
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Connection to database successful...");
+//            System.out.println("Connection to database successful...");
             UUID id = UUID.randomUUID();
             // Creating a timestamp in SQL format
             java.util.Date date = new Date();
@@ -37,7 +37,7 @@ public class LogHandler implements Interfaces.DatabaseConnection
             String sql = "INSERT INTO " + table + " VALUES ('" + id + "', '" + timestamp + "', '" + user + "', '" + message + "')";
             stmt.executeUpdate(sql);
 
-            System.out.println("Inserted records into the table...");
+//            System.out.println("Inserted records into the table...");
 
         }
         catch(SQLException se)

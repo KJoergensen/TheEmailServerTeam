@@ -60,14 +60,14 @@ public class ObjectMapper
                 ex.printStackTrace();
             }
             // print out details of each message
-            System.out.println("Message #" + (i + 1) + ":");
-            System.out.println("\t From: " + from);
-            System.out.println("\t To: " + toList);
-            System.out.println("\t CC: " + ccList);
-            System.out.println("\t Subject: " + subject);
-            System.out.println("\t Message: " + messageContent);
+//            System.out.println("Message #" + (i + 1) + ":");
+//            System.out.println("\t From: " + from);
+//            System.out.println("\t To: " + toList);
+//            System.out.println("\t CC: " + ccList);
+//            System.out.println("\t Subject: " + subject);
+//            System.out.println("\t Message: " + messageContent);
             email = new Email(i, toList, from, subject, messageContent, sentDate, true);
-            System.out.println("email " + email);
+//            System.out.println("email " + email);
 
             list.add(email);
         }

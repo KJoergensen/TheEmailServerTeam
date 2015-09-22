@@ -46,10 +46,10 @@ public class EmailReceiver
             return list;
 
         } catch (NoSuchProviderException ex) {
-            System.out.println("No provider for protocol: " + protocol);
+//            System.out.println("No provider for protocol: " + protocol);
             ex.printStackTrace();
         } catch (MessagingException ex) {
-            System.out.println("Could not connect to the message store");
+//            System.out.println("Could not connect to the message store");
             ex.printStackTrace();
         }
 

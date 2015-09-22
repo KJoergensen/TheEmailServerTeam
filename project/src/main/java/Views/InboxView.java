@@ -118,8 +118,8 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
             String emailFrom = e.getFrom();
             String subject = e.getSubject();
 
-            System.out.println(getDate + " " + emailFrom + " " + subject);
-            System.out.println("Emails in the list : "+emails);
+//            System.out.println(getDate + " " + emailFrom + " " + subject);
+//            System.out.println("Emails in the list : "+emails);
 
             this.tableModel.fireTableDataChanged();
             this.tableModel.setValueAt(getDate, row, 0);
@@ -172,7 +172,7 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
             //int value = tableModel.getValueAt(row,0);
             if (email.getId() == row)
             {
-                System.out.println(email.getBody());
+//                System.out.println(email.getBody());
                 messageTxtArea.setText(email.getBody());
 
             }
