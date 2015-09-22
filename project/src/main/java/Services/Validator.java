@@ -33,6 +33,8 @@ public class Validator
         else {
             return false;
         }
+    private static boolean validateCorrectEmailEnding(String email) {
+        return !email.isEmpty() && email.length() > 9 && email.subSequence(email.length() - 10, email.length()).equals("@gmail.com");
     }
 
     public static String validateUser(User user)
@@ -71,7 +73,7 @@ public class Validator
         else
         {
             //System.out.println("Incorrect email address");
-            LogHandler.addNewRow(user.getUsername(), "Validation failed - Incorrect user credentials");
+            LogHandler.addNewRow(user.getUsername(), "Validation failed - Incorrect email adress");
             return("Incorrect email address");
         }
 
