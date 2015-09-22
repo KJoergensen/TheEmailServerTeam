@@ -23,6 +23,7 @@ public class LoginController {
     public String validateLogin (String email, char[] password)
     {
         LogHandler.addNewRow(email, "Validating user");
+        System.out.println("Validating user");
         user = new User();
         user.setUsername(email);
         user.setPassword(new String(password));
@@ -33,6 +34,7 @@ public class LoginController {
     public void launchInbox ()
     {
         LogHandler.addNewRow(user.getUsername(), "Launching inbox");
+        System.out.println("Launching inbox");
         inboxController = new InboxController(user);
         emailReceiver = new EmailReceiver();
 

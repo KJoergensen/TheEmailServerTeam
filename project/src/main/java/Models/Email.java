@@ -24,6 +24,17 @@ public class Email {
         this.newEmail = newEmail;
     }
 
+    // Without to list
+    public Email(int id, String from, String subject, String body,  Date date, boolean newEmail)
+    {
+        this.id = id;
+        this.from = from;
+        this.subject = subject;
+        this.body = body;
+        this.date = date;
+        this.newEmail = newEmail;
+    }
+
     public String getTo() { return to; }
 
     public void setTo(String to) {

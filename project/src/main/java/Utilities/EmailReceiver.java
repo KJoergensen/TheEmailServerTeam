@@ -22,6 +22,8 @@ public class EmailReceiver
 
     public ArrayList<Email> downloadEmails(String userName, String password)
     {
+        System.out.println("Receiving emails...");
+
         Properties properties = getServerProperties(protocol, host, port);
         Session session = Session.getDefaultInstance(properties);
 
@@ -56,7 +58,7 @@ public class EmailReceiver
             e.printStackTrace();
         }
 
-        return new ArrayList<Email>();
+        return new ArrayList<>();
     }
 
     private Properties getServerProperties(String protocol, String host, String port)

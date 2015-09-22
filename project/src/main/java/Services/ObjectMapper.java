@@ -18,16 +18,25 @@ public class ObjectMapper
 {
     public static ArrayList<Email> mapObjects(Message[] messages) throws Exception
     {
+        System.out.println("Mapping emails...");
         ArrayList<Email> list = new ArrayList<Email>();
 
         for (int i = 0; i < messages.length; i++)
         {
+            System.out.println("Mapping message " + i);
             Message msg = messages[i];
             Address[] fromAddress = msg.getFrom();
-            String from = fromAddress[0].toString();
+            String from = "";
+
+            // Checking for draft emails
+            if (fromAddress.length > 0)
+            {
+                from = fromAddress[0].toString();
+            }
+
             String subject = msg.getSubject();
-            String toList = parseAddresses(msg.getRecipients(Message.RecipientType.TO));
-            String ccList = parseAddresses(msg.getRecipients(Message.RecipientType.CC));
+//            String toList = parseAddresses(msg.getRecipients(Message.RecipientType.TO));
+//            String ccList = parseAddresses(msg.getRecipients(Message.RecipientType.CC));
             Date sentDate = msg.getSentDate();
             String messageContent = "";
             Email email;
@@ -39,15 +48,10 @@ public class ObjectMapper
                 // Most messages are sent as Multipart objects
                 if (content instanceof Multipart)
                 {
-                    // Iterating through bodyparts in Multipart object
-                    int count = ((Multipart) content).getCount();
-                    for (int x = 0; x < count; x++)
+                    BodyPart part = ((Multipart) content).getBodyPart(0);
+                    if (part.isMimeType("text/plain"))
                     {
-                        BodyPart part = ((Multipart) content).getBodyPart(x);
-                        if (part.isMimeType("text/plain"))
-                        {
-                            messageContent = (String) part.getContent();
-                        }
+                        messageContent = (String) part.getContent();
                     }
                 } else if (content != null)
                 {
@@ -66,11 +70,11 @@ public class ObjectMapper
 //            System.out.println("\t CC: " + ccList);
 //            System.out.println("\t Subject: " + subject);
 //            System.out.println("\t Message: " + messageContent);
-            email = new Email(i, toList, from, subject, messageContent, sentDate, true);
-//            System.out.println("email " + email);
+            email = new Email(i, from, subject, messageContent, sentDate, true);
 
             list.add(email);
         }
+        System.out.println("Mapping complete");
 
         return list;
     }
