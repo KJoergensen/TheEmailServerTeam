@@ -1,8 +1,25 @@
 
 import Views.LoginView;
 
-public class Run
+import javax.swing.*;
+
+public class Run extends JApplet
 {
+    public void start()
+    {
+        new LoginView();
+    }
+
+    public void init()
+    {
+
+    }
+
+    public void stop()
+    {
+
+    }
+
     public static void main(String[] args)
     {
         //LogHandler.addNewRow("System", "Application started");
