@@ -35,8 +35,6 @@ public class ObjectMapper
             }
 
             String subject = msg.getSubject();
-//            String toList = parseAddresses(msg.getRecipients(Message.RecipientType.TO));
-//            String ccList = parseAddresses(msg.getRecipients(Message.RecipientType.CC));
             Date sentDate = msg.getSentDate();
             String messageContent = "";
             Email email;
@@ -63,13 +61,7 @@ public class ObjectMapper
                 messageContent = "[Error downloading content]";
                 ex.printStackTrace();
             }
-            // print out details of each message
-//            System.out.println("Message #" + (i + 1) + ":");
-//            System.out.println("\t From: " + from);
-//            System.out.println("\t To: " + toList);
-//            System.out.println("\t CC: " + ccList);
-//            System.out.println("\t Subject: " + subject);
-//            System.out.println("\t Message: " + messageContent);
+
             email = new Email(i, from, subject, messageContent, sentDate, true);
 
             list.add(email);

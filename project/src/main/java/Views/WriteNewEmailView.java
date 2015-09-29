@@ -102,6 +102,7 @@ public class WriteNewEmailView extends JFrame implements ActionListener{
             Email writeEmail = new Email(id,to,from,sub,body,date,newEmail );
             EmailSender.sendMessage(writeEmail, user);
             dispose();
+            JOptionPane.showMessageDialog(this, "The e-mail has been sent!", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

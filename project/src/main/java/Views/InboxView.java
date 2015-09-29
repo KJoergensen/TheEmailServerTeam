@@ -151,40 +151,21 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
             {
                 ex.printStackTrace();
             }
-
         }
-
-
-
-
-
-
     }
 
 // Mouse Actionlistener
     public void mouseClicked(MouseEvent e) {
 
         int row = inboxTable.getSelectedRow();
-        //int column = inboxTable.getSelectedColumn();
 
         for(Email email : emails)
         {
-            //int value = tableModel.getValueAt(row,0);
             if (email.getId() == row)
             {
-//                System.out.println(email.getBody());
                 messageTxtArea.setText(email.getBody());
-
             }
-
-
-
         }
-        //have to define what happen after click the email and subject
-//        System.out.println("Row" + row + "::" + "column" + column);
-
-
-
     }
 
     public void mousePressed(MouseEvent e) {

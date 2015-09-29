@@ -28,6 +28,7 @@ public class LoginView extends JFrame implements ActionListener{
     public LoginView()
     {
         openWindow();
+
     }
 
     public void openWindow()
@@ -73,8 +74,11 @@ public class LoginView extends JFrame implements ActionListener{
         mainPanel.add(centerPanel);
         mainPanel.add(southPanel);
 
+
         return mainPanel;
+
     }
+
 
     public void actionPerformed(ActionEvent e) {
         //click cancel button
@@ -87,6 +91,7 @@ public class LoginView extends JFrame implements ActionListener{
         //define to get email from textField
         if(e.getSource() == this.loginBtn || e.getSource() == this.passwordTxtF)
         {
+            System.out.println("button login");
             controller = new LoginController();
 
             if(controller.validateLogin(this.emailTxtF.getText().trim(), this.passwordTxtF.getPassword()).equals("success"))
@@ -114,6 +119,7 @@ public class LoginView extends JFrame implements ActionListener{
             }
 
             setEnabled(false);
+
 
         }
 

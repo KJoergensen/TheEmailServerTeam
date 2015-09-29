@@ -13,12 +13,10 @@ import javax.mail.Message.RecipientType;
 
 public class EmailReceiver
 {
-    String protocol = "imap";
-    String host = "imap.gmail.com";
-    String port = "993";
-    private Email email;
-    private InboxView inboxView;
-    private ArrayList<Email> list;
+    private String protocol = "imap";
+    private String host = "imap.gmail.com";
+    private String port = "993";
+
 
     public ArrayList<Email> downloadEmails(String userName, String password)
     {
