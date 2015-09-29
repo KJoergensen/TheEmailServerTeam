@@ -36,17 +36,14 @@ public class Validator
                 transport.connect(host, port, user.getUsername(), user.getPassword());
                 transport.close();
                 //System.out.println("Login successful");
-                LogHandler.addNewRow(user.getUsername(), "Validation successful");
                 return "success";
 
             } catch (AuthenticationFailedException e) {
                 //System.out.println("Login failed "+ user.getUsername() + " and ");// + pwd);
-                LogHandler.addNewRow(user.getUsername(), "Validation failed");
                 e.printStackTrace();
                 return "authenticate failed";
             } catch (MessagingException e) {
                 //System.out.println("Unknown login failure");
-                LogHandler.addNewRow(user.getUsername(), "Validation unexpected failure");
                 e.printStackTrace();
                 return "unexpected fail";
             }
@@ -54,7 +51,6 @@ public class Validator
         else
         {
             //System.out.println("Incorrect email address");
-            LogHandler.addNewRow(user.getUsername(), "Validation failed - Incorrect email adress");
             return("Incorrect email address");
         }
 
