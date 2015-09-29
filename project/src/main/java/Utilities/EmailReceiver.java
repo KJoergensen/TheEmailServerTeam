@@ -2,24 +2,25 @@ package Utilities;
 
 import Models.Email;
 import Services.ObjectMapper;
-import Views.InboxView;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Properties;
+import java.util.*;
 import javax.mail.*;
-import javax.mail.Message.RecipientType;
-
 
 public class EmailReceiver
 {
     private String protocol = "imap";
     private String host = "imap.gmail.com";
     private String port = "993";
+    private Message[] messages;
+    private Message[] newMessages;
 
+    private String user;
+    private String pass;
 
     public ArrayList<Email> downloadEmails(String userName, String password)
     {
+        this.user = userName;
+        this.pass = password;
+
         System.out.println("Receiving emails...");
 
         Properties properties = getServerProperties(protocol, host, port);
@@ -28,22 +29,22 @@ public class EmailReceiver
         try {
             // connects to the message store
             Store store = session.getStore(protocol);
-            store.connect(userName, password);
+            store.connect(user, pass);
 
             // opens the inbox folder
             Folder folderInbox = store.getFolder("INBOX");
             folderInbox.open(Folder.READ_ONLY);
 
             // fetches new messages from server
-            Message[] messages = folderInbox.getMessages();
+            messages = folderInbox.getMessages();
             // mapping the messages to a list of email objects
-            ArrayList<Email> list = ObjectMapper.mapObjects(messages);
+            ArrayList<Email> emailList = ObjectMapper.mapObjects(messages);
 
             // disconnect
             folderInbox.close(false);
             store.close();
 
-            return list;
+            return emailList;
 
         } catch (NoSuchProviderException ex) {
 //            System.out.println("No provider for protocol: " + protocol);
@@ -57,6 +58,87 @@ public class EmailReceiver
         }
 
         return new ArrayList<>();
+    }
+
+    public ArrayList<Email> updateInbox()
+    {
+        Properties properties = getServerProperties(protocol, host, port);
+        Session session = Session.getDefaultInstance(properties);
+        ArrayList<Email> emailList = new ArrayList<>();
+
+        try {
+            // connects to the message store
+            Store store = session.getStore(protocol);
+            store.connect(user, pass);
+
+            // opens the inbox folder
+            Folder folderInbox = store.getFolder("INBOX");
+            folderInbox.open(Folder.READ_ONLY);
+
+            // fetches new messages from server
+            newMessages = folderInbox.getMessages();
+
+            if (newMessages.length > messages.length)
+            {
+                System.out.println("New emails available");
+                newMessages = removeDuplicates(messages, newMessages);
+
+                // mapping the messages to a list of email objects
+                emailList = ObjectMapper.mapObjects(newMessages);
+
+                // Adding new mails to messages array
+                addNewMailToMessages(newMessages);
+            }
+            else
+            {
+                System.out.println("No new emails");
+            }
+
+            // disconnect
+            folderInbox.close(false);
+            store.close();
+
+            return emailList;
+
+        } catch (NoSuchProviderException ex) {
+            ex.printStackTrace();
+        } catch (MessagingException ex) {
+            ex.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Could not map the messages");
+            e.printStackTrace();
+        }
+
+        return new ArrayList<>();
+    }
+
+    private void addNewMailToMessages(Message[] newMessages)
+    {
+        Message[] newArray = new Message[messages.length + newMessages.length];
+
+        for (int i = 0; i < messages.length; i++)
+        {
+            newArray[i] = messages[i];
+        }
+        for (int i = 0; i < newMessages.length; i++)
+        {
+            newArray[messages.length+i] = newMessages[i];
+        }
+
+        messages = newArray;
+    }
+
+    private Message[] removeDuplicates(Message[] array1, Message[] array2)
+    {
+        int count = array2.length - array1.length;
+        Message[] newArray = new Message[count];
+
+        for (int i = 0; i < count; i++)
+        {
+            newArray[i] = array2[array1.length + i];
+        }
+
+        return newArray;
     }
 
     private Properties getServerProperties(String protocol, String host, String port)
@@ -81,21 +163,21 @@ public class EmailReceiver
         return properties;
     }
 
-    private String parseAddresses(Address[] address)
-    {
-        String listAddress = "";
-
-        if (address != null) {
-            for (int i = 0; i < address.length; i++) {
-                listAddress += address[i].toString() + ", ";
-            }
-        }
-        if (listAddress.length() > 1) {
-            listAddress = listAddress.substring(0, listAddress.length() - 2);
-        }
-
-        return listAddress;
-    }
+//    private String parseAddresses(Address[] address)
+//    {
+//        String listAddress = "";
+//
+//        if (address != null) {
+//            for (int i = 0; i < address.length; i++) {
+//                listAddress += address[i].toString() + ", ";
+//            }
+//        }
+//        if (listAddress.length() > 1) {
+//            listAddress = listAddress.substring(0, listAddress.length() - 2);
+//        }
+//
+//        return listAddress;
+//    }
 
 
 }

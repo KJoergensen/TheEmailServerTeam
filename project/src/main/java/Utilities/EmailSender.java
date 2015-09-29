@@ -31,13 +31,16 @@ public class EmailSender
 
         // Get the Session object.
         Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
+                new javax.mail.Authenticator()
+                {
+                    protected PasswordAuthentication getPasswordAuthentication()
+                    {
                         return new PasswordAuthentication(username, password);
                     }
                 });
 
-        try {
+        try
+        {
             // Create a default MimeMessage object.
             Message message = new MimeMessage(session);
 
@@ -56,16 +59,10 @@ public class EmailSender
 
             // Send message
             Transport.send(message);
-
-//            System.out.println("Sent message successfully....");
-
-        } catch (MessagingException e) {
+        }
+        catch (MessagingException e)
+        {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
-
 }

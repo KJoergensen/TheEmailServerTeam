@@ -9,6 +9,8 @@ import java.util.Date;
 
 /**
  * Created by Kasper on 25-09-2015.
+ *
+ * Class used to performance test application with JMeter
  */
 public class javaRequest extends AbstractJavaSamplerClient
 {

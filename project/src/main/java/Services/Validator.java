@@ -35,25 +35,19 @@ public class Validator
                 Transport transport = session.getTransport("smtp");
                 transport.connect(host, port, user.getUsername(), user.getPassword());
                 transport.close();
-                //System.out.println("Login successful");
                 return "success";
 
             } catch (AuthenticationFailedException e) {
-                //System.out.println("Login failed "+ user.getUsername() + " and ");// + pwd);
                 e.printStackTrace();
                 return "authenticate failed";
             } catch (MessagingException e) {
-                //System.out.println("Unknown login failure");
                 e.printStackTrace();
                 return "unexpected fail";
             }
         }
         else
         {
-            //System.out.println("Incorrect email address");
             return("Incorrect email address");
         }
-
-
     }
 }

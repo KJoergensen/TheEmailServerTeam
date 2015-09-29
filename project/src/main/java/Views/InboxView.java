@@ -3,10 +3,7 @@ package Views;
 import Controllers.InboxController;
 import Models.Email;
 import Models.User;
-import Utilities.EmailReceiver;
-
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -26,7 +23,6 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
     private ArrayList<Email> emails;
     private InboxController inboxController;
     private User user;
-    //private int row = 0;
 
     public InboxView(InboxController inboxController, ArrayList<Email> emails, User user)
     {
@@ -70,7 +66,7 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
         this.inboxTable = new JTable(tableModel);
         this.inboxTable.addMouseListener(this);
 
-        //make a hedder size to the table
+        //make a header size to the table
         int[] width = new int[this.headerTitle.length];
         width[0]=130;
         width[1]=270;
@@ -118,9 +114,6 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
             String emailFrom = e.getFrom();
             String subject = e.getSubject();
 
-//            System.out.println(getDate + " " + emailFrom + " " + subject);
-//            System.out.println("Emails in the list : "+emails);
-
             this.tableModel.fireTableDataChanged();
             this.tableModel.setValueAt(getDate, row, 0);
             this.tableModel.setValueAt(emailFrom,row,1);
@@ -128,24 +121,21 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
 
             row++;
         }
-        //should delete all old emails from the list
-
     }
 
+    // Update button
     public void actionPerformed(ActionEvent e) {
         //to define the inbox button
         if(e.getSource().equals(updateBtn))
         {
-            //JOptionPane.showMessageDialog(this, "it it under construction!", "Info", JOptionPane.INFORMATION_MESSAGE);
             showInboxMessage(this.inboxController.updateInbox());
-
         }
 
         if(e.getSource().equals(writeBtn))
         {
             try
             {
-                new WriteNewEmailView(user);
+                new WriteNewEmailView(user, inboxController);
             }
             catch (Exception ex)
             {
@@ -154,7 +144,7 @@ public class InboxView extends JFrame implements ActionListener, MouseListener{
         }
     }
 
-// Mouse Actionlistener
+    // Mouse Actionlistener
     public void mouseClicked(MouseEvent e) {
 
         int row = inboxTable.getSelectedRow();

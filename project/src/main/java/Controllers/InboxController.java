@@ -4,56 +4,65 @@ import Models.Email;
 import Models.User;
 import Utilities.EmailReceiver;
 import Utilities.EmailSender;
-import java.util.ArrayList;
+
+import java.util.*;
 
 public class InboxController
 {
-    public EmailReceiver receiver = new EmailReceiver();
-    public EmailSender sender = new EmailSender();
-    public ArrayList<Email> inbox;
+    private EmailReceiver receiver;
+    private EmailSender sender = new EmailSender();
+    private ArrayList<Email> inbox;
     private User user;
 
-
-    public InboxController (User user)
+    public InboxController (User user, ArrayList<Email> inbox, EmailReceiver receiver)
     {
+        this.inbox = inbox;
+        this.receiver = receiver;
         this.user = user;
     }
 
-
-    public void sendEmail(Email email)
+    public void sendEmail(String recipient, String subject, String body)
     {
-        // TODO: Return Http status code
-        //sender.sendEmail(email);
+        int id = 0;
+        String from = user.getUsername();
+        Date date = new Date();
+        boolean newEmail = true;
+
+        Email email = new Email(id, recipient, from, subject, body, date, newEmail);
+        sender.sendMessage(email, user);
     }
 
     public ArrayList<Email> updateInbox()
     {
         // Retrieving all emails from server
-        ArrayList<Email> newEmails = null;
+        ArrayList<Email> newEmails = new ArrayList<>();
 
         try
         {
-            newEmails = receiver.downloadEmails(user.getUsername(), user.getPassword());
-        } catch (Exception e)
+            newEmails = receiver.updateInbox();
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
         }
 
-        this.inbox = new ArrayList<Email>();
-        // Removing all duplicates
-        newEmails.removeAll(inbox);
-
         // Adding new emails to inbox
-        for (Email mail : newEmails)
+        if (!newEmails.isEmpty())
         {
-            inbox.add(mail);
+            try
+            {
+                for (Email mail : newEmails)
+                {
+                    inbox.add(mail);
+                }
 
+            }
+            catch (Exception e)
+            {
+                System.out.println("Failed to add 0 emails to list");
+            }
         }
 
         return inbox;
     }
-
-
-    // TODO: Method that adds new line to log (new email)
-    // TODO: Method that adds new line to log (update inbox)
 }

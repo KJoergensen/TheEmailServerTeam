@@ -8,8 +8,6 @@ import javax.mail.Message;
 import javax.mail.Multipart;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.mail.*;
-
 
 /**
  * Created by Kasper on 14-09-2015.
@@ -71,20 +69,20 @@ public class ObjectMapper
         return list;
     }
 
-    private static String parseAddresses(Address[] address)
-    {
-        String listAddress = "";
-
-        if (address != null) {
-            for (int i = 0; i < address.length; i++) {
-                listAddress += address[i].toString() + ", ";
-            }
-        }
-        if (listAddress.length() > 1) {
-            listAddress = listAddress.substring(0, listAddress.length() - 2);
-        }
-
-        return listAddress;
-    }
+//    private static String parseAddresses(Address[] address)
+//    {
+//        String listAddress = "";
+//
+//        if (address != null) {
+//            for (int i = 0; i < address.length; i++) {
+//                listAddress += address[i].toString() + ", ";
+//            }
+//        }
+//        if (listAddress.length() > 1) {
+//            listAddress = listAddress.substring(0, listAddress.length() - 2);
+//        }
+//
+//        return listAddress;
+//    }
 
 }

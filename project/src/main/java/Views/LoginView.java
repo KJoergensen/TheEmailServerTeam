@@ -1,15 +1,11 @@
 package Views;
 
 import Controllers.LoginController;
-import Services.Validator;
-import Utilities.EmailReceiver;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
 
 /***
  * Created by Hisayo on 04/09/15.
@@ -74,7 +70,6 @@ public class LoginView extends JFrame implements ActionListener{
         mainPanel.add(centerPanel);
         mainPanel.add(southPanel);
 
-
         return mainPanel;
 
     }
@@ -119,11 +114,6 @@ public class LoginView extends JFrame implements ActionListener{
             }
 
             setEnabled(false);
-
-
         }
-
-
-
     }
 }

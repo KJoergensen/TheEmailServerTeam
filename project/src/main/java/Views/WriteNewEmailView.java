@@ -1,14 +1,12 @@
 package Views;
 
-import Models.Email;
+import Controllers.InboxController;
 import Models.User;
-import Utilities.EmailSender;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 /***
  * Created by Hisayo on 07/09/15.
@@ -19,10 +17,12 @@ public class WriteNewEmailView extends JFrame implements ActionListener{
     private JTextArea bodyArea;
     private JButton btnSend, btnCancel;
     private User user;
+    private InboxController controller;
 
-    public WriteNewEmailView(User user)
+    public WriteNewEmailView(User user, InboxController controller)
     {
         this.user = user;
+        this.controller = controller;
         openWindow();
     }
 
@@ -90,17 +90,9 @@ public class WriteNewEmailView extends JFrame implements ActionListener{
 
         if(e.getSource().equals(btnSend))
         {
-            int id = 0;
-            String to = this.txtTo.getText();
-            String from = null;
-            String sub = this.txtSub.getText();
-            String body = this.bodyArea.getText();
-            Date date = null;
-            boolean newEmail = false;
+            // Sending the new email via the inbox controller
+            controller.sendEmail(txtTo.getText(), txtSub.getText(), bodyArea.getText());
 
-            //public Email(int id, String to, String from, String subject, String body,  Date date, boolean newEmail)
-            Email writeEmail = new Email(id,to,from,sub,body,date,newEmail );
-            EmailSender.sendMessage(writeEmail, user);
             dispose();
             JOptionPane.showMessageDialog(this, "The e-mail has been sent!", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
