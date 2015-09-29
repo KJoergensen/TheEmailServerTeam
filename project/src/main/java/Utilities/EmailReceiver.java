@@ -162,22 +162,4 @@ public class EmailReceiver
 
         return properties;
     }
-
-//    private String parseAddresses(Address[] address)
-//    {
-//        String listAddress = "";
-//
-//        if (address != null) {
-//            for (int i = 0; i < address.length; i++) {
-//                listAddress += address[i].toString() + ", ";
-//            }
-//        }
-//        if (listAddress.length() > 1) {
-//            listAddress = listAddress.substring(0, listAddress.length() - 2);
-//        }
-//
-//        return listAddress;
-//    }
-
-
 }
